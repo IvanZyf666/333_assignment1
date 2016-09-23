@@ -43,6 +43,7 @@ for i in range (7):
     char_count = dict()
     total = 0
     
+
 sorted_x = sorted(count[0], key=count[0].get, reverse=True)
 
 for char in sorted_x:
