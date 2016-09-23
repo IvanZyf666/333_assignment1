@@ -17,33 +17,35 @@ mapp = [
    [0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc]]
 
 
-key = "?"
+#key = [0x90, 0xa2, 0x80, 0xc1, 0xf9, 0x0b, 0x00]
+key = ["90", "a2", "80", "c1", "f9", "0b", "00"]
 
-filename = "cipher1.txt"
+filename = "1.txt"
 cipher = [line.rstrip('\n') for line in open(filename)]
 
 key_length = len(key)
 counter = 0
 
 text = ""
-
+#print (cipher)
 for char in cipher:
     if counter >= key_length:
         counter = 0 
     ch = int(char[0], 16)
     cl = int(char[1], 16)
-    
-    key_char = hex(ord(key[counter]))
-    kh = int(key_char[2], 16)
-    kl = int(key_char[3], 16)
+    key_char = key[counter]
+    kh = int(key_char[0], 16)
+    kl = int(key_char[1], 16)
     
     pl = hex(mapp[cl].index(kh))
     ph = hex(mapp[ch].index(kl))
     
-    pt = chr(int(ph+pl[2:]))
+    pt = chr(int(ph+pl[2:], 16))
     text = text + pt
     
     counter += 1
+
+print (text)
     
     
     

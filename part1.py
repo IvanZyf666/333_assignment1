@@ -43,8 +43,8 @@ for i in range (7):
     char_count = dict()
     total = 0
     
-
-sorted_x = sorted(count[0], key=count[0].get, reverse=True)
+iChar = 6
+sorted_x = sorted(count[iChar], key=count[iChar].get, reverse=True)
 
 for char in sorted_x:
-    print(char, count[0][char])
+    print(char, count[iChar][char])
