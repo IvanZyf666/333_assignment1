@@ -16,9 +16,9 @@ for f in freq:
 	freqParsed.append(item)
 
 
-
-freqParsed.sort(key=lambda x: float(x[-1]), reverse=True)
-for sortedItem in freqParsed:
-	print sortedItem
+def sort_ascii_list():
+	freqParsed.sort(key=lambda x: float(x[-1]), reverse=True)
+	for sortedItem in freqParsed:
+		print (sortedItem)
 
 
