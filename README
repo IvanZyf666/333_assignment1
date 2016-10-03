@@ -1,9 +1,26 @@
+Group uc05
+
+########
+#PART 1#
+########
 Instructions for using part 1:
 *navigate to directory containing ctext1hexdump.txt, decrypt.py
 *in the terminal enter 'python3 decrypt.py'
 *a plaintext file named 'plaintext1.txt' will be generated containing the plaintext of ciphertext1.
 
 
+Explanation: we determined the gaps between high frequency of bytes used in the ciphertext and found out that there was a significantly higher spike in word frequency every 7th byte. We thus deduce that the key length is 7. 
+
+We then processed every 7th character since the key length is 7 and that would mean every 7th character would be encrypted using the same key value. Once we have this frequency analysis of every 7th byte, we assign the highest occuring byte to be equal to the plain ascii value of a space, '0x20'. We do this to find our key. 
+
+We then use this key to decrypt the ciphertext to produce 'plaintext1.txt'
+
+We automated finding the key by assuming that the highest occuring byte will be the space ascii character. 
+
+
+########
+#Part 2#
+########
 Instructions for using part 2:
 
 
