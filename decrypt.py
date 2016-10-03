@@ -5,10 +5,13 @@
 
 import operator
 
+#file where we store the hexdumped values of the ciphertext
 filename = "ctext1hexdump.txt"
 cipher = [line.rstrip('\n') for line in open(filename)]
 length = len(cipher)
 
+
+#table used in the decryption process
 table = [
     # 0    1    2    3    4    5    6    7    8    9    10   11   12   13   14    15
     [0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc, 0xe], #0
@@ -27,6 +30,7 @@ table = [
     [0xd, 0xc, 0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9], #13                            
     [0xc, 0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd], #14                             
     [0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc]] #15
+
 
 
 def ith_char(iChar):
@@ -56,10 +60,10 @@ key_length = 7 # I counted it.
 
 # find the key
 # frequency: http://fitaly.com/board/domper3/posts/136.html
-
 count = []
 char_count = dict()
 total = 0
+
 
 
 for i in range (key_length):
@@ -100,16 +104,17 @@ for j in cipher:
 #key = ["50", "2f", "08", "7c", "5f", "30", "00"]
 
 
-filename = "ctext1hexdump.txt"
 cipher = [line.rstrip('\n') for line in open(filename)]
 
 key_length = len(key)
 counter = 0
-
+#creating the plaintext string
 text = ""
 tmp_collist_ph=[]
 tmp_collist_pl=[] 
-#print (cipher)
+
+
+#decryption being done
 for char in cipher:
     if counter >= key_length:
         counter = 0 
@@ -134,6 +139,7 @@ for char in cipher:
     
     counter += 1
 
+#creating a new file and writing the plaintext to it
 plaintext_part1 = open("plaintext1.txt", "w")
 plaintext_part1.write(text)
 plaintext_part1.close()
