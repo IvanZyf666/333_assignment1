@@ -1,8 +1,8 @@
-Group uc05
+# Group uc05
 
-########
-#PART 1#
-########
+
+## PART 1
+
 Instructions for using part 1:
 *navigate to directory containing ctext1hexdump.txt, part1.py
 *in the terminal enter 'python3 part1.py'
@@ -18,9 +18,8 @@ We then use this key to decrypt the ciphertext to produce 'plaintext1.txt'
 We automated finding the key by assuming that the highest occuring byte will be the space ascii character. 
 
 
-########
-#Part 2#
-########
+## Part 2
+
 Instructions for using part 2:
 *navigate to directory containing ctext2hexdump.txt, part2.py (same dir as in part1)
 *in the terminal enter 'python3 part2.py'
@@ -36,4 +35,6 @@ Once we have this frequency analysis of every 23rd byte, we assign the highest o
 
 We then use this key to decrypt the ciphertext and produce resulting file 'plaintext2'
 
-Part 3 Discussion
+We ensured that the key was correct by trying to decrypt gven file with the right key. The process of finding the key is automated, but its verification is not.
+
+## Part 3 Discussion
