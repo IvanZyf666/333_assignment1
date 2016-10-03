@@ -4,9 +4,9 @@
 ## PART 1
 
 Instructions for using part 1:
-*navigate to directory containing ctext1hexdump.txt, part1.py
-*in the terminal enter 'python3 part1.py'
-*a plaintext file named 'plaintext1.txt' will be generated containing the plaintext of ciphertext1.
+* navigate to directory containing ctext1hexdump.txt, part1.py
+* in the terminal enter 'python3 part1.py'
+* a plaintext file named 'plaintext1.txt' will be generated containing the plaintext of ciphertext1.
 
 
 Explanation: we determined the gaps between high frequency of bytes used in the ciphertext and found out that there was a significantly higher spike in word frequency every 7th byte. We thus deduce that the key length is 7. 
@@ -21,9 +21,9 @@ We automated finding the key by assuming that the highest occuring byte will be 
 ## Part 2
 
 Instructions for using part 2:
-*navigate to directory containing ctext2hexdump.txt, part2.py (same dir as in part1)
-*in the terminal enter 'python3 part2.py'
-*a binary file named 'plaintext2' will be generated containing the plaintext of ciphertext2.
+* navigate to directory containing ctext2hexdump.txt, part2.py (same dir as in part1)
+* in the terminal enter 'python3 part2.py'
+* a binary file named 'plaintext2' will be generated containing the plaintext of ciphertext2.
 
 Similarly to Part 1 approach, we found the key length to be 23.
 
