@@ -42,9 +42,15 @@ for i in range (7):
     count.append(char_count)
     char_count = dict()
     total = 0
-    
-iChar = 6
-sorted_x = sorted(count[iChar], key=count[iChar].get, reverse=True)
 
-for char in sorted_x:
-    print(char, count[iChar][char])
+def ith_char(iChar):
+    '''
+    added this function so that we can call for the frequency
+    of ith characters without manually editing iChar 
+    '''
+    sorted_x = sorted(count[iChar], key=count[iChar].get, reverse=True)
+
+    for char in sorted_x:
+        print(char, count[iChar][char])
+    len_ith_char = len(sorted_x)
+    print("iChar is ", iChar, "length is ", len_ith_char)
