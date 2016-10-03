@@ -1,4 +1,15 @@
-mapp = [
+#Part1 
+#Group uc05
+
+
+
+import operator
+
+filename = "ctext1hexdump.txt"
+cipher = [line.rstrip('\n') for line in open(filename)]
+length = len(cipher)
+
+table = [
     # 0    1    2    3    4    5    6    7    8    9    10   11   12   13   14    15
     [0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc, 0xe], #0
     [0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc, 0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0], #1
@@ -17,10 +28,79 @@ mapp = [
     [0xc, 0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd], #14                             
     [0xe, 0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc]] #15
 
-#key = [0x90, 0xa2, 0x80, 0xc1, 0xf9, 0x0b, 0x00]
-key = ["5b", "2f", "08", "7c", "5f", "30", "00"]
 
-filename = "1.txt"
+def ith_char(iChar):
+    max_list = []
+    for i in range(iChar):
+        maximum = max(count[i].items(), key=operator.itemgetter(1))[0]
+        max_list.append(maximum)
+    return max_list
+
+
+# find key length
+# j is the index, i is what you're adding each time. 
+# coincidence is a counter for each iteration of the loop.
+coincidence = []
+for i in range (1, length//2):
+    coincidence.append(0) #add counter for this iteration 
+    
+    for j in range(length):
+        if (j + i) >= length:    
+            break
+        
+        if cipher[j] == cipher[i+j]:
+            coincidence[i-1] += 1
+            
+key_length = 7 # I counted it. 
+
+
+# find the key
+# frequency: http://fitaly.com/board/domper3/posts/136.html
+
+count = []
+char_count = dict()
+total = 0
+
+
+for i in range (key_length):
+    # count frequency for each letter
+    for char in cipher[i::key_length]:
+        total += 1
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    for char in char_count:
+        char_count[char] = round(char_count[char]/total, 5)
+          
+    count.append(char_count)
+    char_count = dict()
+    total = 0
+
+
+#assigning the highest frequencies to '20' which is ASCII for space
+letter = '20'
+cipher = ith_char(key_length)
+key = []
+for j in cipher:
+
+    ch1 = int(j[0], 16)
+    cl1 = int(j[1], 16)
+
+    ph1 = int(letter[0], 16)
+    pl1 = int(letter[1], 16)
+
+    kl1 = hex(table[ph1].index(ch1))
+    kh1 = hex(table[pl1].index(cl1))
+
+    k = kh1[2:]+kl1[2:]
+    print(k)
+    key.append(k)
+
+#key = ["50", "2f", "08", "7c", "5f", "30", "00"]
+
+
+filename = "ctext1hexdump.txt"
 cipher = [line.rstrip('\n') for line in open(filename)]
 
 key_length = len(key)
@@ -39,7 +119,7 @@ for char in cipher:
     kh = int(key_char[0], 16)
     kl = int(key_char[1], 16)
 
-    for pixie in mapp:
+    for pixie in table:
         tmp_collist_ph.append(pixie[kl])
         tmp_collist_pl.append(pixie[kh])
 
@@ -54,7 +134,8 @@ for char in cipher:
     
     counter += 1
 
-#print(text)
-    
-    
-    
+plaintext_part1 = open("plaintext1.txt", "w")
+plaintext_part1.write(text)
+plaintext_part1.close()
+
+
