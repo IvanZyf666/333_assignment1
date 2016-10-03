@@ -4,8 +4,8 @@ Group uc05
 #PART 1#
 ########
 Instructions for using part 1:
-*navigate to directory containing ctext1hexdump.txt, decrypt.py
-*in the terminal enter 'python3 decrypt.py'
+*navigate to directory containing ctext1hexdump.txt, part1.py
+*in the terminal enter 'python3 part1.py'
 *a plaintext file named 'plaintext1.txt' will be generated containing the plaintext of ciphertext1.
 
 
@@ -22,7 +22,18 @@ We automated finding the key by assuming that the highest occuring byte will be 
 #Part 2#
 ########
 Instructions for using part 2:
+*navigate to directory containing ctext2hexdump.txt, part2.py (same dir as in part1)
+*in the terminal enter 'python3 part2.py'
+*a binary file named 'plaintext2' will be generated containing the plaintext of ciphertext2.
 
+Similarly to Part 1 approach, we found the key length to be 23.
 
+We then processed every 23rd character since the key length is 23 and that would mean every 23rd character would be encrypted using the same key value. 
+
+However, in addition to Part 1 approach, we analyzed byte frequency of various differrent file types and determined that '0x00' is the most frequent byte for most non-text file
+
+Once we have this frequency analysis of every 23rd byte, we assign the highest occuring byte to be equal to '0x00'. We do this to find our key. 
+
+We then use this key to decrypt the ciphertext and produce resulting file 'plaintext2'
 
 Part 3 Discussion
