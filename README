@@ -1,0 +1,11 @@
+Instructions for using part 1:
+*navigate to directory containing ctext1hexdump.txt, decrypt.py
+*in the terminal enter 'python3 decrypt.py'
+*a plaintext file named 'plaintext1.txt' will be generated containing the plaintext of ciphertext1.
+
+
+Instructions for using part 2:
+
+
+
+Part 3 Discussion
